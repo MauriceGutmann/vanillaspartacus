@@ -1272,24 +1272,31 @@
     semver "7.3.2"
     semver-intersect "1.4.0"
 
-"@spartacus/assets@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/assets/-/assets-3.0.1.tgz#b16dc4ac466ae673e5005ba08fb2bd5ed06039d4"
-  integrity sha512-aTEM++MM95+O7SZe/LunAIH7DhQxalG5T4gWyZogQz7LbVlo3xOEcg7HissKCU3lWFB7SvsP9uYx2E/Tdrbukg==
+"@spartacus/assets@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/assets/-/assets-3.1.2.tgz#ce342c0459925fab0edda64ffc3d07c3faf6b6b3"
+  integrity sha512-yqIBcibpOrUH5D3D06Eb6tQGr2i9j0uEXddxvpvROj/MIHiW8tQykX6F28qR8IgkSKo982Hfd4KWGxEFpzxq7Q==
   dependencies:
     tslib "^2.0.0"
 
-"@spartacus/core@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/core/-/core-3.0.1.tgz#08f5d5dfd8ba8fb381079752f5f8c24e04d4e602"
-  integrity sha512-Dkdw1/t0mrBSykf0pMCBbc/c/jg7xnpDdSreOi90P1Rc7iM+q5tbsjNcZE3lrHxSZiyAAKnxlFic6YDnJAUMqA==
+"@spartacus/core@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/core/-/core-3.1.2.tgz#1c01578152cb807eb6467726382b8ae1d25c1dce"
+  integrity sha512-UbeleF3T4iyv/uQBXEhznfSYhBlDdveDTZiKIQthjhpmC6MWHeshl0uSvbNV541YLQ6S3O10FDc/neimd2EZTQ==
   dependencies:
     tslib "^2.0.0"
 
-"@spartacus/organization@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/organization/-/organization-3.0.1.tgz#800c66339cfa2eef07066012874b4bf5f9578bd8"
-  integrity sha512-7FYkzkWYw82JtIyNNei6qINjQ2Mw1hO/Dj2lmZxyu2Hd4y4iw82E66leGDyWCTUNukLngocOsjbrwgfvDqBCNw==
+"@spartacus/organization@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/organization/-/organization-3.1.2.tgz#d0386c7b22f041616d79e2a1ecbacbb470b74075"
+  integrity sha512-7praD/9ZUxw2trqRL/5BTVq2BlaiGE0u5UAkpvMVo9TnLSsW5a6BTrvwsspOPLRMyP1xysG8XPmGqj7HV/dTKA==
+  dependencies:
+    tslib "^2.0.0"
+
+"@spartacus/qualtrics@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/qualtrics/-/qualtrics-3.1.2.tgz#d861fee4b6b93fbc03b360b482463055a9ffbb95"
+  integrity sha512-qXuEZBcUtpllSV/ay8TW6+iXnBJHsnkQAITYJVhAYisLOlS16pHU6/OiWLSV+0qhoZtB1H6XhAendVvhVPgm3w==
   dependencies:
     tslib "^2.0.0"
 
@@ -1301,27 +1308,27 @@
     "@angular/localize" "^10.1.0"
     "@nguniversal/express-engine" "^10.1.0"
 
-"@spartacus/setup@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/setup/-/setup-3.0.1.tgz#cb0702f90a8a95bd72504ef5b9e1d80639e2b519"
-  integrity sha512-2dxoxITNuNc8CsPeR0lSWX4J85M/1G4mdTzoBRjjiA7IGLfhG18RsiJPummX1lv+HL/1NFotvtTGuGDYalAriA==
+"@spartacus/setup@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/setup/-/setup-3.1.2.tgz#69030efc1296399e976baadb8ef9f71cdd7c527b"
+  integrity sha512-/EZBAkn6YeILcR76Sy++1K/34fG86FFbQkhuVVRDsmA8OxTJXTmKXGIInY3moO7kvq8icfL0MBuWjZnjWM2/cA==
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
     "@nguniversal/express-engine" "^10.1.0"
     express "^4.15.0"
 
-"@spartacus/storefront@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/storefront/-/storefront-3.0.1.tgz#7e317afea3a93b9d49eb311128880e4a06e61078"
-  integrity sha512-fhFAyKFfmG747sRsOKEn1qLglm/diZMGCfDjC9jVeQd3L6T5/EdBJD+wA7bz66mUy8L3k8pCvvXPHsRDh7NArQ==
+"@spartacus/storefront@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/storefront/-/storefront-3.1.2.tgz#870b54b2ece3b68b162ff4a775955d1a1843ecb0"
+  integrity sha512-DCrPq43/YOGjcHy6m6Ty8pNllAiuGZPb1UecdCZfxCHQMg2pSUEsvMshBNCjx/p9Yr2ufNvmxHg62YsDY4d0Vw==
   dependencies:
     tslib "^2.0.0"
 
-"@spartacus/styles@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spartacus/styles/-/styles-3.0.1.tgz#fcb75f0deab7921a04c6ccb034da7f188f81d7f2"
-  integrity sha512-NGDDE3eQOAbY2fQPMUxdQp5lvFuKgmmbExAnK5LmSd+D3LP5+jyuQ4xOu1LNCJMKue+hKlGgI6mToBgC0Gmp/w==
+"@spartacus/styles@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@spartacus/styles/-/styles-3.1.2.tgz#de4bb37d487cd0c00882a2f5a2c7dcc835772e32"
+  integrity sha512-16Kfzod5Ovk565XtrVLhBzW638iuLT2ldN7rW+Wdnfq1bR+7m+KYs81Y4bbIbrXUCSLqzvde7anj51VmPGe9QQ==
   dependencies:
     hamburgers "^1.1.3"
 
