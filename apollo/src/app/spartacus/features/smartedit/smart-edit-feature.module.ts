@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CmsConfig, provideConfig } from "@spartacus/core";
-import { SmartEditRootModule, SMART_EDIT_FEATURE } from "@spartacus/smartedit/root";
+import { SmartEditConfig, SmartEditRootModule, SMART_EDIT_FEATURE } from "@spartacus/smartedit/root";
 
 @NgModule({
   declarations: [],
@@ -14,6 +14,13 @@ import { SmartEditRootModule, SMART_EDIT_FEATURE } from "@spartacus/smartedit/ro
           import('@spartacus/smartedit').then((m) => m.SmartEditModule),
       },
     }
-  })]
+  }),
+  provideConfig(<SmartEditConfig>{
+    smartEdit: {
+      storefrontPreviewRoute: 'cx-preview',
+      allowOrigin: 'localhost:9002',
+    },
+  })
+  ]
 })
 export class SmartEditFeatureModule { }
