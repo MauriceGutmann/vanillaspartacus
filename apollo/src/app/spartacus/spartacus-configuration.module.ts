@@ -3,6 +3,15 @@ import { translationChunksConfig, translations } from "@spartacus/assets";
 import { FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig } from "@spartacus/core";
 import { defaultB2bCheckoutConfig, defaultB2bOccConfig } from "@spartacus/setup";
 import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacus/storefront";
+import { SmartEditConfig } from "@spartacus/smartedit/root";
+
+export const defaultSmartEditConfig: SmartEditConfig = {
+   smartEdit: {
+      storefrontPreviewRoute: 'cx-preview',
+      allowOrigin: '*',
+   },
+};
+
 
 @NgModule({
   declarations: [],
@@ -18,7 +27,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
     context: {
       currency: ['USD','EUR'],
       language: ['en','de'],
-	  baseSite: ['powertools-spa']
+      baseSite: ['powertools-spa']
     },
   }), provideConfig(<I18nConfig>{
     i18n: {
@@ -26,9 +35,17 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
       chunks: translationChunksConfig,
       fallbackLang: 'en'
     },
-  }), provideConfig(<FeaturesConfig>{
+  }),
+  
+  provideConfig(<SmartEditConfig>{
+   smartEdit: {
+     allowOrigin: '*.sybit.de:443'
+   },
+ }),
+  
+   provideConfig(<FeaturesConfig>{
     features: {
-      level: '4.0'
+      level: '3.3'
     }
   }), provideConfig(defaultB2bOccConfig), provideConfig(defaultB2bCheckoutConfig)]
 })
