@@ -2,191 +2,150 @@
 // ************* Get the Preferred Network **************
 // ******************************************************
 
+let net = "wss://xls20-sandbox.rippletest.net:51233"
 
-function getNet() {
-  let net
-  if (document.getElementById("xls").checked) net = "wss://xls20-sandbox.rippletest.net:51233"
-  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
-  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
-  return net
-} // End of getNet()
+let company_account= null
+let company_public_key= null
+let company_private_key= null
+let company_seed =null
 
-// *******************************************************
+
+
 // ************* Get Account *****************************
-// *******************************************************
-
 
 async function getAccount(type) {
-  let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
   const walletServer = net
-  if (type == 'standby') {
-    document.getElementById('standbyResultField').value = results
-  } else {
-    document.getElementById('operationalResultField').value = results
-  }
+
   await client.connect()
 
-
   results += '\nConnected, funding wallet.'
-  if (type == 'standby') {
-    document.getElementById('standbyResultField').value = results
-  } else {
-    document.getElementById('operationalResultField').value = results
-  }
+  document.getElementById('customerResultField').value = results
+
   const my_wallet = (await client.fundWallet(null, {faucetHost: walletServer})).wallet
   const my_balance = (await client.getXrpBalance(my_wallet.address))
-  if (type == 'standby') {
-    document.getElementById('standbyAccountField').value = my_wallet.address
-    document.getElementById('standbyPubKeyField').value = my_wallet.publicKey
-    document.getElementById('standbyPrivKeyField').value = my_wallet.privateKey
-    document.getElementById('standbyBalanceField').value =
+
+    document.getElementById('customerAccountField').value = my_wallet.address
+    document.getElementById('customerPubKeyField').value = my_wallet.publicKey
+    document.getElementById('customerPrivKeyField').value = my_wallet.privateKey
+    document.getElementById('customerBalanceField').value =
       (await client.getXrpBalance(my_wallet.address))
-    document.getElementById('standbySeedField').value = my_wallet.seed
-    results += '\nStandby account created.'
-    document.getElementById('standbyResultField').value = results
-  } else {
-    document.getElementById('operationalAccountField').value = my_wallet.address
-    document.getElementById('operationalPubKeyField').value = my_wallet.publicKey
-    document.getElementById('operationalPrivKeyField').value = my_wallet.privateKey
-    document.getElementById('operationalSeedField').value = my_wallet.seed
-    document.getElementById('operationalBalanceField').value =
-      (await client.getXrpBalance(my_wallet.address))
-    results += '\nOperational account created.'
-    document.getElementById('operationalResultField').value = results
-  }
-  document.getElementById('seeds').value = standbySeedField.value + '\n' + operationalSeedField.value
+    document.getElementById('customerSeedField').value = my_wallet.seed
+    results += '\ncustomer account created.'
+    document.getElementById('customerResultField').value = results
+
+  document.getElementById('seeds').value = customerSeedField.value
   client.disconnect()
 } // End of getAccount()
 
-// *******************************************************
+
 // ********** Get Accounts from Seeds ********************
-// *******************************************************
 
 async function getAccountsFromSeeds() {
-  let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
+  document.getElementById('customerResultField').value = results
   await client.connect()
   results += '\nConnected, finding wallets.\n'
-  document.getElementById('standbyResultField').value = results
-  var lines = seeds.value.split('\n');
-  const standby_wallet = xrpl.Wallet.fromSeed(lines[0])
-  const operational_wallet = xrpl.Wallet.fromSeed(lines[1])
-  const standby_balance = (await client.getXrpBalance(standby_wallet.address))
-  const operational_balance = (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyAccountField').value = standby_wallet.address
-  document.getElementById('standbyPubKeyField').value = standby_wallet.publicKey
-  document.getElementById('standbyPrivKeyField').value = standby_wallet.privateKey
-  document.getElementById('standbySeedField').value = standby_wallet.seed
-  document.getElementById('standbyBalanceField').value =
-    (await client.getXrpBalance(standby_wallet.address))
+  document.getElementById('customerResultField').value = results
+  // var lines = seeds.value.split('\n');
+  const customer_wallet = xrpl.Wallet.fromSeed(seeds.value)
+  // const company_wallet = xrpl.Wallet.fromSeed(lines[1])
+  const customer_balance = (await client.getXrpBalance(customer_wallet.address))
+  // const company_balance = (await client.getXrpBalance(company_wallet.address))
+  document.getElementById('customerAccountField').value = customer_wallet.address
+  document.getElementById('customerPubKeyField').value = customer_wallet.publicKey
+  document.getElementById('customerPrivKeyField').value = customer_wallet.privateKey
+  document.getElementById('customerSeedField').value = customer_wallet.seed
+  document.getElementById('customerBalanceField').value =
+    (await client.getXrpBalance(customer_wallet.address))
 
+  /*document.getElementById('companyAccountField').value = company_wallet.address
+  document.getElementById('companyPubKeyField').value = company_wallet.publicKey
+  document.getElementById('companyPrivKeyField').value = company_wallet.privateKey
+  document.getElementById('companySeedField').value = company_wallet.seed
+  document.getElementById('companyBalanceField').value =
+    (await client.getXrpBalance(company_wallet.address))*/
 
-  document.getElementById('operationalAccountField').value = operational_wallet.address
-  document.getElementById('operationalPubKeyField').value = operational_wallet.publicKey
-  document.getElementById('operationalPrivKeyField').value = operational_wallet.privateKey
-  document.getElementById('operationalSeedField').value = operational_wallet.seed
-  document.getElementById('operationalBalanceField').value =
-    (await client.getXrpBalance(operational_wallet.address))
   client.disconnect()
-
 
 } // End of getAccountsFromSeeds()
 
-// *******************************************************
+
 // ******************** Send XRP *************************
-// *******************************************************
 
 async function sendXRP() {
-  results = "Connecting to the selected ledger.\n"
-  document.getElementById('standbyResultField').value = results
-  let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
+  results = "Connecting to the ledger.\n"
+  document.getElementById('customerResultField').value = results
   const client = new xrpl.Client(net)
   await client.connect()
 
-
   results += "\nConnected. Sending XRP.\n"
-  document.getElementById('standbyResultField').value = results
+  document.getElementById('customerResultField').value = results
 
+  const customer_wallet = xrpl.Wallet.fromSeed(customerSeedField.value)
+  const company_wallet = xrpl.Wallet.fromSeed(company_seed)
+  const sendAmount = customerAmountField.value
 
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const sendAmount = standbyAmountField.value
-
-
-  results += "\nstandby_wallet.address: = " + standby_wallet.address
-  document.getElementById('standbyResultField').value = results
   const prepared = await client.autofill({
     "TransactionType": "Payment",
-    "Account": standby_wallet.address,
+    "Account": customer_wallet.address,
     "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value
+    "Destination": company_account
   })
-  const signed = standby_wallet.sign(prepared)
+  const signed = customer_wallet.sign(prepared)
   const tx = await client.submitAndWait(signed.tx_blob)
   results += "\nBalance changes: " +
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('standbyResultField').value = results
+  document.getElementById('customerResultField').value = results
 
-  document.getElementById('standbyBalanceField').value =
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalBalanceField').value =
-    (await client.getXrpBalance(operational_wallet.address))
+  document.getElementById('customerBalanceField').value =
+    (await client.getXrpBalance(customer_wallet.address))
+  document.getElementById('companyBalanceField').value =
+    (await client.getXrpBalance(company_wallet.address))
   client.disconnect()
-
 
 } // End of sendXRP()
 
-// **********************************************************************
+
 // ****** Reciprocal Transactions ****************************************
-// **********************************************************************
 
-
-// *******************************************************
-// ********* Send XRP from Operational account ***********
-// *******************************************************
+// ********* Send XRP from company account ***********
 
 
 async function oPsendXRP() {
 
 
   results = "Connecting to testnet.\n"
-  document.getElementById('operationalResultField').value = results
-  let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
+  document.getElementById('companyResultField').value = results
   const client = new xrpl.Client(net)
   await client.connect()
 
 
   results += "\nConnected. Sending XRP.\n"
-  document.getElementById('operationalResultField').value = results
+  document.getElementById('companyResultField').value = results
 
 
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const sendAmount = operationalAmountField.value
+  const company_wallet = xrpl.Wallet.fromSeed(companySeedField.value)
+  const customer_wallet = xrpl.Wallet.fromSeed(customerSeedField.value)
+  const sendAmount = companyAmountField.value
 
 
-  results += "\noperational_wallet.address: = " + operational_wallet.address
-  document.getElementById('operationalResultField').value = results
+  results += "\ncompany_wallet.address: = " + company_wallet.address
+  document.getElementById('companyResultField').value = results
 
 
   // ---------------------------------- Prepare transaction
   // Note that the destination is hard coded.
   const prepared = await client.autofill({
     "TransactionType": "Payment",
-    "Account": operational_wallet.address,
-    "Amount": xrpl.xrpToDrops(operationalAmountField.value),
-    "Destination": operationalDestinationField.value
+    "Account": company_wallet.address,
+    "Amount": xrpl.xrpToDrops(companyAmountField.value),
+    "Destination": companyDestinationField.value
   })
 
 
   // ---------------------------- Sign prepared instructions
-  const signed = operational_wallet.sign(prepared)
+  const signed = company_wallet.sign(prepared)
 
 
   // ------------------------------------ Submit signed blob
@@ -195,13 +154,13 @@ async function oPsendXRP() {
 
   results += "\nBalance changes: " +
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalResultField').value = results
+  document.getElementById('companyResultField').value = results
 
 
-  document.getElementById('standbyBalanceField').value =
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalBalanceField').value =
-    (await client.getXrpBalance(operational_wallet.address))
+  document.getElementById('customerBalanceField').value =
+    (await client.getXrpBalance(customer_wallet.address))
+  document.getElementById('companyBalanceField').value =
+    (await client.getXrpBalance(company_wallet.address))
 
 
   client.disconnect()
