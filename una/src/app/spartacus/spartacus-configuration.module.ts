@@ -20,7 +20,7 @@ export const defaultSmartEditConfig: SmartEditConfig = {
   providers: [provideConfig(layoutConfig), provideConfig(mediaConfig), ...defaultCmsContentProviders, provideConfig(<OccConfig>{
     backend: {
       occ: {
-        baseUrl: 'https://una.sybit.de',
+        baseUrl: 'https://localhost:9002',
       }
     },
   }), provideConfig(<SiteContextConfig>{
@@ -36,13 +36,13 @@ export const defaultSmartEditConfig: SmartEditConfig = {
       fallbackLang: 'en'
     },
   }),
-  
+
   provideConfig(<SmartEditConfig>{
    smartEdit: {
      allowOrigin: '*.sybit.de:443'
    },
  }),
-  
+
    provideConfig(<FeaturesConfig>{
     features: {
       level: '3.3'

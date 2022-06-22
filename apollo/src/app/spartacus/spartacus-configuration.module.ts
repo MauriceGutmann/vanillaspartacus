@@ -11,7 +11,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
   providers: [provideConfig(layoutConfig), provideConfig(mediaConfig), ...defaultCmsContentProviders, provideConfig(<OccConfig>{
     backend: {
       occ: {
-        baseUrl: 'https://apollo.sybit.de',
+        baseUrl: 'https://localhost:9002',
       }
     },
   }), provideConfig(<SiteContextConfig>{
@@ -24,7 +24,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
     i18n: {
       resources: translations,
       chunks: translationChunksConfig,
-      fallbackLang: 'en'
+      fallbackLang: 'de'
     },
   }), provideConfig(<FeaturesConfig>{
     features: {
