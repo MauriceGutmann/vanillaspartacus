@@ -52,7 +52,7 @@
             aria-checked="true"
             (change)="changeType('crypto')"
             [value]="'crypto'"
-            [checked]="true"
+            [checked]="'crypto'==typeSelected"
             formControlName="paymentType"
           />
           <label
@@ -76,9 +76,9 @@
     </button>
   </div>
   <div class="col-md-12 col-lg-6">
-    <button class="btn btn-block btn-primary" (click)="next()">
+    <a class="btn btn-block btn-primary" routerLink="/payment-site">
       {{ 'common.continue' | cxTranslate }}
-    </button>
+    </a>
   </div>
 </div>
 
