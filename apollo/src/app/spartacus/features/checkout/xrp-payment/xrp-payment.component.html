@@ -1,24 +1,22 @@
 <h1>XRP Payment</h1>
 <form id="theForm">
-  <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
+  <button type="button" class="btn btn-block btn-action" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
   <br/>
-  <textarea id="seeds" cols="40" rows= "2"></textarea>
+  <textarea id="seeds" cols="40" rows= "1"></textarea>
   <br/><br/>
   <table>
-    <tr valign="top">
       <td>
         <table>
           <tr valign="top">
             <td>
             <td>
-              <button type="button" onClick="getAccount('costumer')">Get New costumer Account</button>
               <table>
                 <tr valign="top">
                   <td align="right">
-                    costumer Account
+                    customer Account
                   </td>
                   <td>
-                    <input type="text" id="costumerAccountField" size="40"/>
+                    <input type="text" id="customerAccountField" size="40"/>
                     <br>
                   </td>
                 </tr>
@@ -27,58 +25,40 @@
                     Public Key
                   </td>
                   <td>
-                    <input type="text" id="costumerPubKeyField" size="40"/>
+                    <input type="text" id="customerPubKeyField" size="40"/>
                     <br>
                   </td>
-                </tr>
-                <tr>
-                  <td align="right">
-                    Private Key
-                  </td>
-                  <td>
-                    <input type="text" id="costumerPrivKeyField" size="40"/>
-                    <br>
-                  </td>
-                </tr>
+                </tr> //Public Key
                 <tr>
                   <td align="right">
                     Seed
                   </td>
                   <td>
-                    <input type="text" id="costumerSeedField" size="40"/>
+                    <input type="text" id="customerSeedField" size="40"/>
                     <br>
                   </td>
-                </tr>
+                </tr> //Seed
                 <tr>
                   <td align="right">
                     XRP Balance
                   </td>
                   <td>
-                    <input type="text" id="costumerBalanceField" size="40"/>
+                    <input type="text" id="customerBalanceField" size="40"/>
                     <br>
                   </td>
-                </tr>
+                </tr> //Balance
                 <tr>
                   <td align="right">
                     Amount
                   </td>
                   <td>
-                    <input type="text" id="costumerAmountField" size="40" value="100"/>
+                    <input type="text" id="customerAmountField" size="40" value="100"/>
                     <br>
                   </td>
-                </tr>
-                <tr>
-                  <td align="right">
-                    Destination
-                  </td>
-                  <td>
-                    <input type="text" id="costumerDestinationField" size="40" value="100"/>
-                    <br>
-                  </td>
-                </tr>
+                </tr> //Amount
               </table>
               <p align="right">
-                <textarea id="costumerResultField" cols="80" rows="20" ></textarea>
+                <textarea id="customerResultField" cols="80" rows="20" ></textarea>
               </p>
             </td>
             <td>
@@ -93,92 +73,5 @@
           </tr>
         </table>
       </td>
-      <td>
-        <table>
-          <tr>
-            <td>
-              <table>
-                <tr>
-                  <td align="center" valign="top">
-                    <button type="button" onClick="oPsendXRP()">&#60;Send XRP</button>
-                  </td>
-                  <td align="right">
-                    <button type="button" onClick="getAccount('company')">Get New company Account</button>
-                    <table>
-                      <tr valign="top">
-                        <td align="right">
-                          company Account
-                        </td>
-                        <td>
-                          <input type="text" id="companyAccountField" size="40"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          Public Key
-                        </td>
-                        <td>
-                          <input type="text" id="companyPubKeyField" size="40"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          Private Key
-                        </td>
-                        <td>
-                          <input type="text" id="companyPrivKeyField" size="40"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          Seed
-                        </td>
-                        <td>
-                          <input type="text" id="companySeedField" size="40"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          XRP Balance
-                        </td>
-                        <td>
-                          <input type="text" id="companyBalanceField" size="40"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          Amount
-                        </td>
-                        <td>
-                          <input type="text" id="companyAmountField" size="40" value="100"/>
-                          <br>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="right">
-                          Destination
-                        </td>
-                        <td>
-                          <input type="text" id="companyDestinationField" size="40" value="100"/>
-                          <br>
-                        </td>
-                      </tr>
-                    </table>
-                    <p align="right">
-                      <textarea id="companyResultField" cols="80" rows="20" ></textarea>
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
   </table>
 </form>

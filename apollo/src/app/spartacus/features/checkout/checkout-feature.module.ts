@@ -7,6 +7,7 @@ import { PayWithCryptoComponent } from './pay-with-crypto/pay-with-crypto.compon
 import {RouterModule, Routes} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {
+  CmsPageGuard,
   GlobalMessageComponentModule,
   KeyboardFocusModule,
   OutletModule,
@@ -20,6 +21,7 @@ import { XrpPaymentComponent } from './xrp-payment/xrp-payment.component';
 const staticRoutes: Routes = [{
   path: 'payment-site',
   component: PaymentSiteComponent // Custom page component,
+
 }];
 
 @NgModule({
