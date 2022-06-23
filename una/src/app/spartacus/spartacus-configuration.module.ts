@@ -25,7 +25,7 @@ export const defaultSmartEditConfig: SmartEditConfig = {
     },
   }), provideConfig(<SiteContextConfig>{
     context: {
-      currency: ['USD','EUR'],
+      currency: ['USD','EUR', 'XRP'],
       language: ['en','de'],
       baseSite: ['powertools-spa']
     },

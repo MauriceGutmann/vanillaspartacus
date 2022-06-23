@@ -1,77 +1,88 @@
 <h1>XRP Payment</h1>
 <form id="theForm">
-  <button type="button" class="btn btn-block btn-action" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-  <br/>
-  <textarea id="seeds" cols="40" rows= "1"></textarea>
-  <br/><br/>
-  <table>
-      <td>
-        <table>
-          <tr valign="top">
-            <td>
-            <td>
-              <table>
+  <button type="button" class="btn btn-block btn-action" onClick="getAccountsFromSeeds()">Get Account From Seeds</button>
+  <input
+    id="seeds"
+    class="form-control"
+    formControlName="Seed"
+    type="text"
+    placeholder="Enter Seed"
+  />
+
+  <table align="center">
                 <tr valign="top">
                   <td align="right">
                     customer Account
                   </td>
                   <td>
-                    <input type="text" id="customerAccountField" size="40"/>
-                    <br>
+                    <input
+                      id="customerAccountField"
+                      class="form-control"
+                      formControlName="Account"
+                      type="text"
+                      placeholder="Enter Your Account"
+                    />
                   </td>
-                </tr>
+                </tr><!--Account -->
                 <tr>
                   <td align="right">
                     Public Key
                   </td>
                   <td>
-                    <input type="text" id="customerPubKeyField" size="40"/>
-                    <br>
+                    <input
+                      id="customerPubKeyField"
+                      class="form-control"
+                      formControlName="PubKey"
+                      type="text"
+                      placeholder="Enter PubKey"
+                    />
                   </td>
-                </tr> //Public Key
+                </tr> <!--Public Key -->
                 <tr>
                   <td align="right">
                     Seed
                   </td>
                   <td>
-                    <input type="text" id="customerSeedField" size="40"/>
-                    <br>
+                    <input
+                      id="customerSeedField"
+                      class="form-control"
+                      formControlName="costumerSeed"
+                      type="text"
+                      placeholder="Enter Seed Number"
+                    />
                   </td>
-                </tr> //Seed
+                </tr> <!--Seed -->
                 <tr>
                   <td align="right">
                     XRP Balance
                   </td>
                   <td>
-                    <input type="text" id="customerBalanceField" size="40"/>
-                    <br>
+                    <input
+                      id="customerBalanceField"
+                      class="form-control"
+                      formControlName="Balance"
+                      type="text"
+                      disabled
+                    />
                   </td>
-                </tr> //Balance
+                </tr> <!--Balance -->
                 <tr>
                   <td align="right">
                     Amount
                   </td>
                   <td>
-                    <input type="text" id="customerAmountField" size="40" value="100"/>
-                    <br>
+                    <input
+                      id="customerAmountField"
+                      class="form-control"
+                      formControlName="Amount"
+                      type="text"
+                      value="56.99"
+                      disabled
+                    />
+
                   </td>
-                </tr> //Amount
+                </tr> <!--Amount -->
               </table>
-              <p align="right">
-                <textarea id="customerResultField" cols="80" rows="20" ></textarea>
-              </p>
-            </td>
-            <td>
-              <table>
-                <tr valign="top">
-                  <td align="center" valign="top">
-                    <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-  </table>
+
+  <button type="button" class="btn btn-block btn-primary" onClick="sendXRP()">Send XRP&#62;</button>
 </form>

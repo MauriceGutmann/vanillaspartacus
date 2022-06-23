@@ -16,7 +16,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
     },
   }), provideConfig(<SiteContextConfig>{
     context: {
-      currency: ['USD','EUR'],
+      currency: ['USD','EUR', 'XRP'],
       language: ['en','de'],
 	  baseSite: ['powertools-spa']
     },
